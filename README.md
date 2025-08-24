@@ -512,6 +512,35 @@ In this example:
 
 - **Before Hooks** → Class components were stateful; functional components were stateless.  
 - **After Hooks** → Functional components are now fully stateful and preferred in modern React.  
-- Functional components + Hooks = Modern standard for React development.  
+- Functional components + Hooks = Modern standard for React development.
+---
+
+# Understanding Components in React
+
+## What Are Components?
+- Self-contained UI pieces  
+- Encapsulate structure, state, and behavior  
+- Can be reused anywhere in the app  
+
+## Types of Components
+
+### Presentational (Dumb)
+```jsx
+function Button({ label, onClick }) {
+  return <button onClick={onClick}>{label}</button>;
+}
+```
+
+### Container (Smart)
+```jsx
+function UserProfile() {
+  const [user, setUser] = React.useState(null);
+  React.useEffect(() => {
+    setUser({ name: "Alice", age: 25 });
+  }, []);
+  return user ? <Profile data={user} /> : <p>Loading...</p>;
+}
+```
+---
 
 
