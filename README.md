@@ -364,3 +364,154 @@ export default function App() {
 
 ---
 
+##React Components ##
+
+# Component Classes vs. Functional Components in React
+
+React has revolutionized the way we think about user interfaces by introducing component-based architecture. As a developer, understanding the different types of components is crucial for building efficient and maintainable applications. This section delves into the nuances of **Component Classes** and **Functional Components**, providing insights into their pros, cons, and best use cases.
+
+---
+
+## What Are Component Classes?
+
+Component Classes, often referred to simply as **class components**, are the traditional way of defining components in React. These components are ES6 classes that extend the base `React.Component` class.
+
+### Defining a Class Component
+
+Here’s a simple example:
+
+```jsx
+import React from 'react';
+
+class Greeting extends React.Component {
+    render() {
+        return <h1>Hello, {this.props.name}!</h1>;
+    }
+}
+
+export default Greeting;
+```
+
+In the example above, the `Greeting` class component accepts `props` and uses the `render` method to display a greeting message.
+
+---
+
+## The Lifecycle of Class Components
+
+One significant advantage of class components is the built-in **lifecycle methods** that allow developers to perform actions at specific points in the component’s life.  
+
+Some commonly used lifecycle methods include:
+
+- **componentDidMount** → Invoked after the component is mounted.  
+- **componentDidUpdate** → Invoked immediately after updating occurs.  
+- **componentWillUnmount** → Invoked immediately before a component is unmounted and destroyed.  
+
+Utilizing these lifecycle methods effectively can lead to improved performance and user experience.
+
+---
+
+## What Are Functional Components?
+
+Functional components, also known as **stateless components** (historically), are simpler and often preferred for their ease of use. They are JavaScript functions that return React elements.  
+
+⚡ With the introduction of **Hooks** (React 16.8), functional components gained the ability to **manage state** and **side effects**, making them as powerful as class components.
+
+### Why were functional components called "stateless"?
+
+- **Before Hooks** → Functional components could not hold state. They just accepted `props` and returned JSX, hence the term "stateless".  
+- **After Hooks** → Functional components can now use `useState`, `useEffect`, and other Hooks to manage state and lifecycle, making the term “stateless” outdated.
+
+---
+
+### Defining a Functional Component
+
+```jsx
+import React from 'react';
+
+const Greeting = ({ name }) => {
+    return <h1>Hello, {name}!</h1>;
+}
+
+export default Greeting;
+```
+
+This `Greeting` functional component does the same thing as its class counterpart but is more concise and easier to read.
+
+---
+
+## Using Hooks in Functional Components
+
+Hooks are one of the key features that have made functional components more **functional**. With Hooks, developers can use state and other React features without writing class components.
+
+### Example: Using `useState` and `useEffect`
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        document.title = `Count: ${count}`;
+    }, [count]);
+
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+        </div>
+    );
+}
+
+export default Counter;
+```
+
+In this example:
+- `useState` is used to manage the count state.  
+- `useEffect` updates the document title whenever the count changes.  
+
+---
+
+## Class Components vs. Functional Components: A Comparison
+
+1. **Syntax and Readability**  
+   - Functional components are more concise and easier to read.  
+   - Class components are more verbose due to `class` syntax and lifecycle methods.  
+
+2. **State Management**  
+   - Before Hooks → Only class components could manage state.  
+   - After Hooks → Functional components can also manage state effectively.  
+
+3. **Lifecycle Methods vs. Hooks**  
+   - Class components rely on lifecycle methods (`componentDidMount`, etc.).  
+   - Functional components use Hooks (`useEffect`) for lifecycle events.  
+
+4. **Performance**  
+   - Functional components have a smaller footprint and generally better performance due to less overhead.  
+
+5. **Testing**  
+   - Functional components are easier to test because they are pure functions.  
+   - Class components may involve complex state and lifecycle logic.  
+
+---
+
+## Best Practices and Use Cases
+
+### When to Use Class Components
+- If you need lifecycle methods that are not directly covered by Hooks.  
+- When working with legacy codebases with existing class-based components.  
+
+### When to Use Functional Components
+- For **new projects**, since they are modern, concise, and easier to read.  
+- If you want to take advantage of React’s **Hooks** for state management and side effects.  
+- When reusability and simplicity are priorities.  
+
+---
+
+## ✅ Key Takeaways
+
+- **Before Hooks** → Class components were stateful; functional components were stateless.  
+- **After Hooks** → Functional components are now fully stateful and preferred in modern React.  
+- Functional components + Hooks = Modern standard for React development.  
+
+
