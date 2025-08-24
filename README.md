@@ -364,7 +364,7 @@ export default function App() {
 
 ---
 
-##React Components ##
+# React Components #
 
 # Component Classes vs. Functional Components in React
 
